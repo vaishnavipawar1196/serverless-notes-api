@@ -57,15 +57,15 @@ serverless-notes-api/
 git clone <repo-url>
 cd serverless-notes-api
 
-**2. Install Dependencies**
+### 2. Install Dependencies
 cd hello-world
 npm install
 
-**3. Build Project**
+### 3. Build Project
 cd ..
 sam build
 
-**4. Deploy to AWS**
+### 4. Deploy to AWS
 sam deploy --guided
 
 🌐 API Endpoints
