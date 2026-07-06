@@ -1,28 +1,37 @@
-# 📒 Serverless Notes API (AWS Lambda + DynamoDB + API Gateway)
+# 📒 Serverless Notes API
 
-A fully serverless REST API built using AWS Lambda, API Gateway, DynamoDB, and AWS SAM.  
-This project demonstrates a complete CRUD backend using AWS cloud services.
+A fully serverless REST API built using **AWS Lambda**, **Amazon API Gateway**, **Amazon DynamoDB**, and **AWS SAM**. This project demonstrates a complete CRUD (Create, Read, Update, Delete) REST API deployed on AWS using a serverless architecture.
 
 ---
 
 ## 🚀 Architecture
 
-- API Gateway → Handles HTTP requests
-- AWS Lambda → Business logic
-- DynamoDB → NoSQL database
-- AWS SAM → Infrastructure as Code
+```
+Client
+   │
+   ▼
+Amazon API Gateway
+   │
+   ▼
+AWS Lambda
+   │
+   ▼
+Amazon DynamoDB
+```
 
 ---
 
 ## 📌 Features
 
-- Create a note
-- Get all notes
-- Get note by ID
-- Update a note
-- Delete a note
-- Fully serverless architecture
-- Auto scalable backend
+- ✅ Create a note
+- ✅ Get all notes
+- ✅ Get a note by ID
+- ✅ Update a note
+- ✅ Delete a note
+- ✅ Fully serverless architecture
+- ✅ Infrastructure as Code using AWS SAM
+- ✅ IAM-based DynamoDB access
+- ✅ Environment variables for configuration
 
 ---
 
@@ -32,46 +41,232 @@ This project demonstrates a complete CRUD backend using AWS cloud services.
 - AWS Lambda
 - Amazon API Gateway (REST API)
 - Amazon DynamoDB
-- AWS SAM
-- AWS SDK v3
+- AWS SAM (Serverless Application Model)
+- AWS SDK for JavaScript v3
 
 ---
 
 ## 📂 Project Structure
 
+```
 serverless-notes-api/
 │
 ├── hello-world/
-│   ├── app.mjs              # Lambda handler (CRUD logic)
+│   ├── app.mjs
 │   ├── package.json
+│   └── package-lock.json
 │
-├── template.yaml           # AWS SAM template
+├── events/
+├── template.yaml
 └── README.md
+```
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Prerequisites
 
-### 1. Clone Repository
+Before running this project, install:
+
+- AWS CLI
+- AWS SAM CLI
+- Node.js 20.x or later
+- An AWS Account
+
+Configure AWS credentials:
+
 ```bash
-git clone <repo-url>
-cd serverless-notes-api
+aws configure
+```
 
-### 2. Install Dependencies
+---
+
+## 🚀 Installation
+
+### Clone the repository
+
+```bash
+git clone <repository-url>
+cd serverless-notes-api
+```
+
+### Install dependencies
+
 ```bash
 cd hello-world
 npm install
+```
 
-### 3. Build Project
+### Build the application
+
 ```bash
 cd ..
 sam build
+```
 
-### 4. Deploy to AWS
+### Deploy the application
+
 ```bash
 sam deploy --guided
+```
 
-🌐 API Endpoints
+For future deployments:
 
-Base URL:
-https://9l3daljwd2.execute-api.ap-south-1.amazonaws.com/Prod/notes
+```bash
+sam deploy
+```
+
+---
+
+## 🌐 API Endpoints
+
+Replace `<api-id>` and `<region>` with your deployed API details.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/notes` | Create a note |
+| GET | `/notes` | Get all notes |
+| GET | `/notes/{id}` | Get note by ID |
+| PUT | `/notes/{id}` | Update note |
+| DELETE | `/notes/{id}` | Delete note |
+
+Example:
+
+```
+https://<api-id>.execute-api.<region>.amazonaws.com/Prod
+```
+
+> Example from this deployment:
+>
+> ```
+> https://9l3daljwd2.execute-api.ap-south-1.amazonaws.com/Prod
+> ```
+
+---
+
+## 📝 Create Note
+
+**POST** `/notes`
+
+Request Body
+
+```json
+{
+  "title": "AWS Lambda",
+  "content": "Serverless Notes API"
+}
+```
+
+---
+
+## 📖 Get All Notes
+
+**GET** `/notes`
+
+---
+
+## 📖 Get Note By ID
+
+**GET** `/notes/{id}`
+
+---
+
+## ✏️ Update Note
+
+**PUT** `/notes/{id}`
+
+Request Body
+
+```json
+{
+  "title": "Updated Title",
+  "content": "Updated Content"
+}
+```
+
+---
+
+## 🗑️ Delete Note
+
+**DELETE** `/notes/{id}`
+
+---
+
+## 🗄️ DynamoDB Table
+
+| Property | Value |
+|----------|-------|
+| Table Name | Notes |
+| Primary Key | noteId (String) |
+
+---
+
+## 🔐 Environment Variables
+
+| Variable | Value |
+|----------|-------|
+| TABLE_NAME | Notes |
+
+---
+
+## 🔑 IAM Policy
+
+The Lambda function uses the following AWS SAM policy:
+
+- `DynamoDBCrudPolicy`
+
+---
+
+## 🧪 Testing
+
+You can test the API using:
+
+- Postman
+- curl
+- API Gateway Console
+
+Example:
+
+```bash
+curl https://<api-id>.execute-api.<region>.amazonaws.com/Prod/notes
+```
+
+---
+
+## 📚 Learning Outcomes
+
+This project demonstrates:
+
+- Serverless application development
+- AWS Lambda functions
+- Amazon API Gateway REST APIs
+- DynamoDB CRUD operations
+- AWS SDK v3
+- Environment Variables
+- IAM Permissions
+- AWS SAM deployment
+- Infrastructure as Code (IaC)
+
+---
+
+## 🚀 Future Improvements
+
+- Amazon Cognito Authentication
+- Request validation
+- Pagination
+- File upload with Amazon S3
+- CloudWatch logging enhancements
+- CI/CD using AWS CodePipeline and CodeBuild
+
+---
+
+## 📄 License
+
+This project is created for learning and demonstration purposes.
+
+---
+
+## 👩‍💻 Author
+
+**Vaishnavi Pawar**
+
+AWS Certified Developer – Associate (DVA-C02)
