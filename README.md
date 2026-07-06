@@ -58,14 +58,17 @@ git clone <repo-url>
 cd serverless-notes-api
 
 ### 2. Install Dependencies
+```bash
 cd hello-world
 npm install
 
 ### 3. Build Project
+```bash
 cd ..
 sam build
 
 ### 4. Deploy to AWS
+```bash
 sam deploy --guided
 
 🌐 API Endpoints
